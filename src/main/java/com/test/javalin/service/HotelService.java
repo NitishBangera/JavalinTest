@@ -37,4 +37,15 @@ public class HotelService {
 		}
 		return hotels;
 	}
+	
+	public void update(final List<Hotel> hotels) {
+		insert(hotels);
+	}
+	
+	public void delete(final String ids) {
+		String[] idVals = ids.split(",");
+		for (String idVal : idVals) {
+			storage.remove(Integer.parseInt(idVal));
+		}
+	}
 }
