@@ -13,10 +13,12 @@ import com.test.javalin.model.Hotel;
 public class HotelService {
 	private Map<Integer, Hotel> storage = new HashMap<>();
 	
-	public void insert(final Hotel hotel) {
-		int id = hotel.getId();
-		if (!storage.containsKey(id)) {
-			storage.put(id, hotel);
+	public void insert(final List<Hotel> hotels) {
+		for (Hotel hotel : hotels) {
+			int id = hotel.getId();
+			if (!storage.containsKey(id)) {
+				storage.put(id, hotel);
+			}
 		}
 	}
 	

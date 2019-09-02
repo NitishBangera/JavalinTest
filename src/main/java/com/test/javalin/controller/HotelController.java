@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.google.gson.reflect.TypeToken;
 import com.test.javalin.model.Hotel;
 import com.test.javalin.service.HotelService;
+import com.test.javalin.util.JsonUtil;
 
 import io.dinject.controller.Controller;
 import io.dinject.controller.Get;
@@ -24,8 +26,8 @@ public class HotelController {
 	}
 	
 	@Post("insert")
-	public void insert(Hotel hotel) {
-		hotelService.insert(hotel);
+	public void insert(Object hotels) {
+		hotelService.insert(JsonUtil.convert(hotels, new TypeToken<List<Hotel>>() {}));
 	}
 	
 	@Get("get")
